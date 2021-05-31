@@ -5,9 +5,9 @@
   "name": "maya-bday",
   "version": "1.0.0",
   "description": "Texts my sister every so often to wish her a happy birthday",
-  "main": "spam.js",
+  "main": "main.js",
   "scripts": {
-    "start": "node spam.js"
+    "start": "node main.js"
   },
   "keywords": [
     "birthday",
@@ -16,6 +16,7 @@
   "author": "Ari Sweedler",
   "license": "MIT",
   "dependencies": {
+    "express": "^4.17.1",
     "twilio": "^3.63.0"
   }
 }
