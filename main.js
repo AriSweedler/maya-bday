@@ -23,3 +23,6 @@ server.get("/stats", function (req, res) {
 // Invoke the spam callback every 2 minutes
 //setInterval(spam, interval_in_ms);
 setInterval(() => console.log("intent to send", ++counter), 1000);
+
+// Don't forget to do this or else Heroku will crash [like so](https://stackoverflow.com/questions/60603527/error-r10-boot-timeout-web-process-failed-to-bind-to-port-within-60-second)
+server.listen(process.env.PORT || 5000);
