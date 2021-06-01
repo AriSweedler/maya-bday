@@ -55,4 +55,7 @@ server.listen(process.env.PORT || 5000);
 
 // Lol keep awake
 var http = require("http");
-setInterval(() => { http.get("http://maya-bday.herokuapp.com"); }, 1000*60*3);
+/* go to sleep
+ *
+ * setInterval(() => { http.get("http://maya-bday.herokuapp.com"); }, 1000*60*3);
+ */
