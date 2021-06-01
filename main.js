@@ -34,7 +34,7 @@ server.get("/", function (req, res) {
 });
 
 // Set up the spam callback. the '/stats' page will display the global state
-let gs = {counter: 0, display_me: null}
+let gs = {counter: 100, display_me: null}
 const spam = () => {
   gs.display_me = text_maya(`Happy birthday lol (${++gs.counter}/200)`);
 };
@@ -52,3 +52,7 @@ setInterval(spam, interval_in_ms);
 
 // Don't forget to do this or else Heroku will crash [like so](https://stackoverflow.com/questions/60603527/error-r10-boot-timeout-web-process-failed-to-bind-to-port-within-60-second)
 server.listen(process.env.PORT || 5000);
+
+// Lol keep awake
+var http = require("http");
+setInterval(() => { http.get("http://maya-bday.herokuapp.com"); }, 1000*60*3);
