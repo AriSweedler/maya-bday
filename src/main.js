@@ -1,31 +1,7 @@
-// Twilio stuff
-
-// Credentials
-const accountSid = process.env.TWILIO_ACCOUNT_SID;
-const authToken = process.env.TWILIO_AUTH_TOKEN;
-const from = process.env.TWILIO_NUMBER;
-const to = process.env.MAYA_NUMBER;
-
-// require the Twilio module and create a REST client
-const client = require("twilio")(accountSid, authToken);
-
-// Set up the generic ability to send a text from Twilio
-const text_maya = (body) => {
-  message_obj = { to, from, body };
-  console.log("Texting maya:", message_obj);
-  client.messages
-    .create(message_obj)
-    .then((response) => console.log(response.sid))
-    .catch((reason) => {
-      console.log(reason);
-    });
-  return message_obj
-};
-
-/******************************************************************************/
+import text_maya from "./twilio-maya.js";
+import express from "express";
 
 // Import express & create server
-const express = require("express");
 const server = express();
 
 // respond with "hello world" when a GET request is made to the homepage
@@ -34,7 +10,7 @@ server.get("/", function (req, res) {
 });
 
 // Set up the spam callback. the '/stats' page will display the global state
-let gs = {counter: 100, display_me: null}
+let gs = { counter: 100, display_me: null };
 const spam = () => {
   gs.display_me = text_maya(`Happy birthday lol (${++gs.counter}/200)`);
 };
@@ -54,7 +30,7 @@ setInterval(spam, interval_in_ms);
 server.listen(process.env.PORT || 5000);
 
 // Lol keep awake
-var http = require("http");
+// var http = require("http");
 /* go to sleep
  *
  * setInterval(() => { http.get("http://maya-bday.herokuapp.com"); }, 1000*60*3);

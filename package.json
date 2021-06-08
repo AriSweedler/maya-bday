@@ -5,9 +5,10 @@
   "name": "maya-bday",
   "version": "1.0.0",
   "description": "Texts my sister every so often to wish her a happy birthday",
-  "main": "main.js",
+  "type": "module",
+  "main": "src/main.js",
   "scripts": {
-    "start": "node main.js"
+    "start": "node src/main.js"
   },
   "keywords": [
     "birthday",
