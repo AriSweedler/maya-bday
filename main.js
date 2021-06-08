@@ -1,31 +1,9 @@
 // Twilio stuff
+import express from "express";
+import http from "http";
+import text_maya from "./twilio-maya.js";
 
-// Credentials
-const accountSid = process.env.TWILIO_ACCOUNT_SID;
-const authToken = process.env.TWILIO_AUTH_TOKEN;
-const from = process.env.TWILIO_NUMBER;
-const to = process.env.MAYA_NUMBER;
-
-// require the Twilio module and create a REST client
-const client = require("twilio")(accountSid, authToken);
-
-// Set up the generic ability to send a text from Twilio
-const text_maya = (body) => {
-  message_obj = { to, from, body };
-  console.log("Texting maya:", message_obj);
-  client.messages
-    .create(message_obj)
-    .then((response) => console.log(response.sid))
-    .catch((reason) => {
-      console.log(reason);
-    });
-  return message_obj
-};
-
-/******************************************************************************/
-
-// Import express & create server
-const express = require("express");
+// Create server
 const server = express();
 
 // respond with "hello world" when a GET request is made to the homepage
@@ -54,7 +32,6 @@ setInterval(spam, interval_in_ms);
 server.listen(process.env.PORT || 5000);
 
 // Lol keep awake
-var http = require("http");
 /* go to sleep
  *
  * setInterval(() => { http.get("http://maya-bday.herokuapp.com"); }, 1000*60*3);
